@@ -1,12 +1,11 @@
-from sklearn.linear_model import LogisticRegression
-import argparse
 import os
-import numpy as np
-from sklearn.metrics import mean_squared_error
 import joblib
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder
+import argparse
+import numpy as np
 import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 
@@ -74,6 +73,11 @@ def main():
 
     accuracy = model.score(test_data, test_label)
     run.log("Accuracy", np.float(accuracy))
+
+    os.makedirs('outputs', exist_ok=True)
+
+    # Save model
+    joblib.dump(model, 'outputs/model.joblib')
 
 
 if __name__ == '__main__':
