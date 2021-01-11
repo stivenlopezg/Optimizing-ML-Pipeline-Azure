@@ -23,6 +23,13 @@ I used the Bandit policy, where this terminates runs where the main metric is no
 
 Using AutoML, the task was defined as "classification" and the main metric to optimize as "Accuracy" using the default iterations, without allowing the process to exceed 30 minutes. The best performance was obtained with the VotingEnsemble algorithm with an Accuracy of 91.71%.
 
+AutoML allows ensemble models, as is the case with the VotingEnsemble. First, the assembly methods use different algorithms, even those algorithms can be defined as weak learners, however, when they work together they can obtain very good results and deal with problems such as the trade-off between bias and variance.
+
+The VotingEnsemble predicts based on the weighted average of the predicted probabilities for each class in the case of a classification problem like the one we have. Some optimal hyperparameters of the VotingClassifier that we found:
+
+* **reg_lambda**: 1.35. It is a hyperparameter that helps us with the regularization to avoid overfitting, one expects that the larger this value the stronger the regularization.
+* **scale_pos_weight**: 1. It helps us to give a weight to the classes, it is a hyperparameter widely used to treat problems of unbalanced classes.
+
 ## Pipeline comparison
 
 Our experiments give us the following results:
