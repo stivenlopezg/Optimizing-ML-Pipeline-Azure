@@ -9,7 +9,17 @@ This model is then compared to an Azure AutoML run.
 
 In this project, a classifier was trained to predict whether a client with certain characteristics will subscribe to a term deposit or not with the bank. Two options are compared, on the one hand the HyperDrive option to optimize the best hyperparameters of the logistic regression of the scikit-learn framework, and the second option the Azure AutoML using the Azure Machine Learning Service SDK.
 
-12 iterations were experimented with to find the best hyperparameters using HyperDrive. The best performance was an Accuracy of 91.13%, while using the AutoML a performance in the Accuracy of 91.71% was obtained.
+The data set is related to marketing campaigns of a banking institution. The campaigns were based on phone calls. As mentioned above, the objective is to predict whether a term bank deposit was signed or not.
+
+The idea is to predict this variable based on characteristics such as customer data such as sociodemographic information, behavior within the financial institution, some macroeconomic variables and information at the time and after the campaign.
+
+In the data preprocessing, some steps were done to leave the data in a clean way for model training:
+
+* Null values removed.
+* The variables referred to dates (month, days of the week) were transformed into numerical variables.
+* The categorical variables were coded as dummy variables (ohe).
+
+After this preprocessing step, 12 iterations were experimented to find the best hyperparameters of the logistic regression using HyperDrive. The best performance was an Accuracy of 91.13%, while using AutoML a performance in Accuracy of 91.71% was obtained.
 
 ## Scikit-learn Pipeline
 
