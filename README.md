@@ -25,7 +25,7 @@ After this preprocessing step, 12 iterations were experimented to find the best 
 
 In the Sklearn pipeline, we used the logistic regression model for classification with the adjustment of the hyperparameters using Hyperdrive. The hyperparameters used are: C (Inverse of the regularization factor) and max_iter (maximum number of iterations). In order to adjust the hyperparameters, we have used the main metric Accuracy in order to maximize it.
 
-Random sampling was used to allow an informed initial search and iteratively allow to refine the search spaces to improve the results.
+The RandomParameterSampling was used which randomly selects the values of the parameters in some range defined by the system. For our problem we define a maximum of 12 iterations and it is a way to optimize the hyperparameters with less computational cost than looking at a complete grid, for example.
 
 I used the Bandit policy, where this terminates runs where the main metric is not within the slack factor compared to the best performance run. This ignores runs that will not give the best results and will help decrease experimentation time.
 
